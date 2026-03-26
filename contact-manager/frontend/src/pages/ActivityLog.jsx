@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
+const API = 'https://inglu-contactvault.onrender.com/api/contacts'
+
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const ACTION_STYLES = {
@@ -32,7 +34,7 @@ export default function ActivityLog() {
   const [filter,  setFilter]  = useState('all')
 
   useEffect(() => {
-    axios.get('/api/contacts/meta/activity')
+    axios.get(`${API}/meta/activity`)
       .then(r => setLogs(r.data.logs))
       .catch(() => {})
       .finally(() => setLoading(false))

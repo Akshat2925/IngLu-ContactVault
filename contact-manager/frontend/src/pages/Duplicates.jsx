@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
+const API = 'https://inglu-contactvault.onrender.com/api/contacts'
+
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const MATCH_LABELS = {
@@ -66,7 +68,7 @@ export default function Duplicates({ onRefresh }) {
 
   const fetchDuplicates = () => {
     setLoading(true)
-    axios.get('/api/contacts/meta/duplicates')
+    axios.get(`${API}/meta/duplicates`)
       .then(r => setDuplicates(r.data.duplicates))
       .catch(() => toast.error('Failed to load duplicates'))
       .finally(() => setLoading(false))
@@ -78,7 +80,7 @@ export default function Duplicates({ onRefresh }) {
     if (!confirm(`Delete "${name}"?`)) return
     setDeleting(id)
     try {
-      await axios.delete(`/api/contacts/${id}`)
+      await axios.delete(`${API}/${id}`)
       toast.success(`"${name}" deleted`)
       fetchDuplicates()
       onRefresh()

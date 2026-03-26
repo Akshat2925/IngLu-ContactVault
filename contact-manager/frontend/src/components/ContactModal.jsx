@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 
+const API = 'https://inglu-contactvault.onrender.com/api/contacts'
+
 // ─── Field definitions ────────────────────────────────────────────────────────
 const FIELDS = [
   { label: 'Full Name *', name: 'name',    type: 'text',  placeholder: 'John Doe',              span: 2 },
@@ -37,7 +39,7 @@ export default function ContactModal({ contact, onSave, onClose, tags: existingT
       dupTimer.current = setTimeout(async () => {
         try {
           const updated = { ...form, [name]: value }
-          const { data } = await axios.post('/api/contacts/meta/check-duplicate', {
+          const { data } = await axios.post(`${API}/meta/check-duplicate`, {
             name:      updated.name,
             email:     updated.email,
             phone:     updated.phone,
