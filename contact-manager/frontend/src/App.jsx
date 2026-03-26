@@ -10,7 +10,7 @@ import Favorites    from './pages/Favorites'
 import ActivityLog  from './pages/ActivityLog'
 import Duplicates   from './pages/Duplicates'
 
-const API = 'https://inglu-contactvault.onrender.com/api/contacts'
+const API = `${import.meta.env.VITE_API_URL}/api/contacts`
 
 export default function App() {
   // ─── State ──────────────────────────────────────────────────────────────────

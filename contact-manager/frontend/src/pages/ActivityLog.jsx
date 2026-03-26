@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const API = 'https://inglu-contactvault.onrender.com/api/contacts'
+const API = `${import.meta.env.VITE_API_URL}/api/contacts`
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 

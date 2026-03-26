@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
-const API = 'https://inglu-contactvault.onrender.com/api/contacts'
+const API = `${import.meta.env.VITE_API_URL}/api/contacts`
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
